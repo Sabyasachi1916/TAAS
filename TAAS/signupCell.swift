@@ -30,7 +30,7 @@ class signupCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func signUp(){
-        NSNotificationCenter.defaultCenter().postNotificationName("", object: <#T##AnyObject?#>)
+        NSNotificationCenter.defaultCenter().postNotificationName("signUp", object: nil)
     }
  
 }
