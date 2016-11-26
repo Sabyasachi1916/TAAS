@@ -23,7 +23,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     var profession = ""
     var degree = ""
     var expertise = ""
-    var arrStudent = ["","","","","","",""]
+    var arrStudent = ["","","","","","","","",""]
     var arrTeacher = ["","","","","","","","","","","",""]
     @IBOutlet var tableView :UITableView?
     override func viewDidLoad() {
@@ -67,6 +67,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
             cell.textField!.placeholder = arrCellNames[indexPath.row]
             cell.textField!.attributedPlaceholder = NSAttributedString(string:arrCellNames[indexPath.row], attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
             cell.textField?.tag = indexPath.row
+            cell.textField?.delegate = self
             if cell.textField?.tag == 6 {
                 cell.textField?.secureTextEntry = true
             }else{
@@ -242,7 +243,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
-        if textField.tag == 2{
+               if textField.tag == 2{
             if textField.text?.characters.count > 0{
                 if self.validateEmail(textField.text!){
                     return true
@@ -264,8 +265,25 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
         }
             arrStudent.removeAtIndex(textField.tag)
             arrStudent.insert(textField.text!, atIndex: textField.tag)
+        arrTeacher.removeAtIndex(textField.tag)
+        arrTeacher.insert(textField.text!, atIndex: textField.tag)
             return true
         
+    }
+    func textFieldDidEndEditing(textField: UITextField){
+        arrStudent.removeAtIndex(textField.tag)
+        arrStudent.insert(textField.text!, atIndex: textField.tag)
+        arrTeacher.removeAtIndex(textField.tag)
+        arrTeacher.insert(textField.text!, atIndex: textField.tag)
+    
+
+    }
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool{
+        arrStudent.removeAtIndex(textField.tag)
+        arrStudent.insert(textField.text!, atIndex: textField.tag)
+        arrTeacher.removeAtIndex(textField.tag)
+        arrTeacher.insert(textField.text!, atIndex: textField.tag)
+        return true
     }
     func validatePhone(value: String) -> Bool {
         let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"

@@ -1,0 +1,6 @@
+framework module Pods_TAAS {
+  umbrella header "Pods-TAAS-umbrella.h"
+
+  export *
+  module * { export * }
+}

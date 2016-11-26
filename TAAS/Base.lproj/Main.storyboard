@@ -502,11 +502,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="signUpCell" id="LPz-8y-DNK" customClass="signupCell" customModule="TAAS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="LPz-8y-DNK" id="MoK-ax-VuW">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LPz-8y-DNK" id="MoK-ax-VuW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgC-4v-Quk">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgC-4v-Quk">
                                                     <rect key="frame" x="270" y="7" width="61" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="KN8-Xt-oHH"/>
@@ -515,13 +515,24 @@
                                                     <state key="normal" title="SIGNUP">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="signUp" destination="LPz-8y-DNK" eventType="touchUpInside" id="kcz-PY-v5p"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="sgC-4v-Quk" firstAttribute="centerX" secondItem="MoK-ax-VuW" secondAttribute="centerX" id="69I-O8-bMW"/>
+                                                <constraint firstItem="sgC-4v-Quk" firstAttribute="top" secondItem="MoK-ax-VuW" secondAttribute="topMargin" constant="-1" id="C1a-yt-u0n"/>
+                                                <constraint firstItem="sgC-4v-Quk" firstAttribute="centerY" secondItem="MoK-ax-VuW" secondAttribute="centerY" id="Cd3-7h-C1g"/>
                                                 <constraint firstItem="sgC-4v-Quk" firstAttribute="top" secondItem="MoK-ax-VuW" secondAttribute="top" constant="7" id="OrP-Ix-3Vr"/>
                                                 <constraint firstAttribute="bottom" secondItem="sgC-4v-Quk" secondAttribute="bottom" constant="6" id="jRa-fB-8Fx"/>
                                                 <constraint firstItem="sgC-4v-Quk" firstAttribute="centerX" secondItem="MoK-ax-VuW" secondAttribute="centerX" id="mzl-Er-FFR"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="jRa-fB-8Fx"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
