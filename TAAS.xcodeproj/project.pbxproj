@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DA2644A82A4BD5E1A2A322D /* Pods_TAAS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AEF4C9CF6085C2FEB48380 /* Pods_TAAS.framework */; };
 		2846F6651DDCD047005E0ABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6641DDCD047005E0ABF /* AppDelegate.swift */; };
 		2846F6671DDCD047005E0ABF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6661DDCD047005E0ABF /* ViewController.swift */; };
 		2846F66A1DDCD047005E0ABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2846F6681DDCD047005E0ABF /* Main.storyboard */; };
 		2846F66C1DDCD047005E0ABF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2846F66B1DDCD047005E0ABF /* Assets.xcassets */; };
 		2846F66F1DDCD047005E0ABF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2846F66D1DDCD047005E0ABF /* LaunchScreen.storyboard */; };
+		2846F6771DDCDBDE005E0ABF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6761DDCDBDE005E0ABF /* SignInViewController.swift */; };
+		2846F6791DDCE263005E0ABF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6781DDCE263005E0ABF /* API.swift */; };
+		2850BFCF1DDE3BA200D882E9 /* TeacherHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2850BFCE1DDE3BA200D882E9 /* TeacherHomeViewController.swift */; };
+		287008151DE6015B00BFCFA1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008141DE6015B00BFCFA1 /* RegisterViewController.swift */; };
+		287008171DE6280C00BFCFA1 /* textCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008161DE6280C00BFCFA1 /* textCell.swift */; };
+		287008191DE6293C00BFCFA1 /* selectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008181DE6293C00BFCFA1 /* selectCell.swift */; };
+		2870081B1DE62E4B00BFCFA1 /* signupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870081A1DE62E4B00BFCFA1 /* signupCell.swift */; };
+		2870081D1DE6308F00BFCFA1 /* studentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C64BAC9E3D6C9BF8D7596D /* Pods-TAAS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TAAS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TAAS/Pods-TAAS.debug.xcconfig"; sourceTree = "<group>"; };
+		11E139A71BEC8954DB858029 /* Pods-TAAS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TAAS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TAAS/Pods-TAAS.release.xcconfig"; sourceTree = "<group>"; };
 		2846F6611DDCD047005E0ABF /* TAAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2846F6641DDCD047005E0ABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2846F6661DDCD047005E0ABF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +33,15 @@
 		2846F66B1DDCD047005E0ABF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2846F66E1DDCD047005E0ABF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2846F6701DDCD047005E0ABF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2846F6761DDCDBDE005E0ABF /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2846F6781DDCE263005E0ABF /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		2850BFCE1DDE3BA200D882E9 /* TeacherHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherHomeViewController.swift; sourceTree = "<group>"; };
+		287008141DE6015B00BFCFA1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		287008161DE6280C00BFCFA1 /* textCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textCell.swift; sourceTree = "<group>"; };
+		287008181DE6293C00BFCFA1 /* selectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectCell.swift; sourceTree = "<group>"; };
+		2870081A1DE62E4B00BFCFA1 /* signupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signupCell.swift; sourceTree = "<group>"; };
+		2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = studentTableViewCell.swift; sourceTree = "<group>"; };
+		D8AEF4C9CF6085C2FEB48380 /* Pods_TAAS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TAAS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DA2644A82A4BD5E1A2A322D /* Pods_TAAS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +61,8 @@
 			children = (
 				2846F6631DDCD047005E0ABF /* TAAS */,
 				2846F6621DDCD047005E0ABF /* Products */,
+				9D6DE9EDF65F22CC13B92F71 /* Pods */,
+				2938C4FEF080E42BC6D317D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +79,37 @@
 			children = (
 				2846F6641DDCD047005E0ABF /* AppDelegate.swift */,
 				2846F6661DDCD047005E0ABF /* ViewController.swift */,
+				2846F6761DDCDBDE005E0ABF /* SignInViewController.swift */,
+				2850BFCE1DDE3BA200D882E9 /* TeacherHomeViewController.swift */,
+				287008141DE6015B00BFCFA1 /* RegisterViewController.swift */,
+				287008161DE6280C00BFCFA1 /* textCell.swift */,
+				2870081A1DE62E4B00BFCFA1 /* signupCell.swift */,
+				287008181DE6293C00BFCFA1 /* selectCell.swift */,
+				2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */,
 				2846F6681DDCD047005E0ABF /* Main.storyboard */,
 				2846F66B1DDCD047005E0ABF /* Assets.xcassets */,
 				2846F66D1DDCD047005E0ABF /* LaunchScreen.storyboard */,
 				2846F6701DDCD047005E0ABF /* Info.plist */,
+				2846F6781DDCE263005E0ABF /* API.swift */,
 			);
 			path = TAAS;
+			sourceTree = "<group>";
+		};
+		2938C4FEF080E42BC6D317D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8AEF4C9CF6085C2FEB48380 /* Pods_TAAS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D6DE9EDF65F22CC13B92F71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				10C64BAC9E3D6C9BF8D7596D /* Pods-TAAS.debug.xcconfig */,
+				11E139A71BEC8954DB858029 /* Pods-TAAS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2846F6731DDCD047005E0ABF /* Build configuration list for PBXNativeTarget "TAAS" */;
 			buildPhases = (
+				CDFC16E7BD9F4684693EEA58 /* 📦 Check Pods Manifest.lock */,
 				2846F65D1DDCD047005E0ABF /* Sources */,
 				2846F65E1DDCD047005E0ABF /* Frameworks */,
 				2846F65F1DDCD047005E0ABF /* Resources */,
+				F82C0801E4993FBFC6F0A0AA /* 📦 Embed Pods Frameworks */,
+				FAFE54038287013C8CE6D16A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +181,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CDFC16E7BD9F4684693EEA58 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F82C0801E4993FBFC6F0A0AA /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TAAS/Pods-TAAS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAFE54038287013C8CE6D16A /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TAAS/Pods-TAAS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2846F65D1DDCD047005E0ABF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2846F6671DDCD047005E0ABF /* ViewController.swift in Sources */,
+				2870081D1DE6308F00BFCFA1 /* studentTableViewCell.swift in Sources */,
 				2846F6651DDCD047005E0ABF /* AppDelegate.swift in Sources */,
+				2846F6791DDCE263005E0ABF /* API.swift in Sources */,
+				287008191DE6293C00BFCFA1 /* selectCell.swift in Sources */,
+				287008151DE6015B00BFCFA1 /* RegisterViewController.swift in Sources */,
+				2870081B1DE62E4B00BFCFA1 /* signupCell.swift in Sources */,
+				287008171DE6280C00BFCFA1 /* textCell.swift in Sources */,
+				2850BFCF1DDE3BA200D882E9 /* TeacherHomeViewController.swift in Sources */,
+				2846F6771DDCDBDE005E0ABF /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,23 +354,30 @@
 		};
 		2846F6741DDCD047005E0ABF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10C64BAC9E3D6C9BF8D7596D /* Pods-TAAS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TAAS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MyCompany.TAAS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2846F6751DDCD047005E0ABF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11E139A71BEC8954DB858029 /* Pods-TAAS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TAAS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MyCompany.TAAS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -286,6 +400,7 @@
 				2846F6751DDCD047005E0ABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
