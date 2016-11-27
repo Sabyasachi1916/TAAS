@@ -8,10 +8,12 @@
 
 import UIKit
 
+
 class RegisterViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIActionSheetDelegate {
 var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","Password","Confirm Password","Student","Grade","Signup"]
-    var countryList = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic (CAR)","Chad","Chile","China","Colombia","Comoros","Democratic Republic of the Congo","Republic of the Congo","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates (UAE)","United Kingdom (UK)","United States of America (USA)","Uruguay","Uzbekistan","Vanuatu","Vatican City (Holy See)","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
-    
+    var countryID: [String] = []
+    var countryList: [String] = []//["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic (CAR)","Chad","Chile","China","Colombia","Comoros","Democratic Republic of the Congo","Republic of the Congo","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates (UAE)","United Kingdom (UK)","United States of America (USA)","Uruguay","Uzbekistan","Vanuatu","Vatican City (Holy See)","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
+    var studentSelected = true
     var firstName = ""
     var lastName = ""
     var Email = ""
@@ -23,14 +25,25 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     var profession = ""
     var degree = ""
     var expertise = ""
-    var arrStudent = ["","","","","","","","",""]
-    var arrTeacher = ["","","","","","","","","","","",""]
+    var arrStudent = ["","","","","Select","","","",""]
+    var arrTeacher = ["","","","","Select","","","","","Select","Select",""]
+    var arrTextFields:[AnyObject]  = []
     @IBOutlet var tableView :UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RegisterViewController.loadTableViewForStudent), name: "reloadForStudent", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RegisterViewController.loadTableViewForTeacher), name: "reloadForTeacher", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RegisterViewController.signup), name: "signUp", object: nil)
+        API.getCountryList({json in
+           // print(json["data"])
+            let arrCountryData = json["data"] as! NSArray
+            for countryData in arrCountryData{
+                let dict = NSDictionary(dictionary: countryData as! [NSObject : AnyObject])
+                self.countryList.append(dict.valueForKey("name") as! String)
+                self.countryID.append(dict.valueForKey("id") as! String)
+            }
+           // print(self.countryList)
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -42,6 +55,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     //MARK: - RELOAD tableview for  student
     func loadTableViewForStudent() -> Void {
         arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","Password","Confirm Password","Student","Grade","Signup"]
+        studentSelected = true
     tableView?.reloadData()
     }
     
@@ -49,6 +63,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     //MARK: - RELOAD tableview for Teacher
     func loadTableViewForTeacher() -> Void {
         arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","Password","Confirm Password","Student","Profession","Degree","Expertise","Signup"]
+        studentSelected = false
         tableView?.reloadData()
     }
     
@@ -77,12 +92,7 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
                     cell.textField?.secureTextEntry = false
                 }
             }
-            if cell.textField?.tag == 3{
-                cell.textField?.keyboardType = UIKeyboardType.EmailAddress
-            }
-            if cell.textField?.tag == 4{
-                cell.textField?.keyboardType = UIKeyboardType.NumbersAndPunctuation
-            }
+            arrTextFields.append(cell.textField!)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
             
@@ -241,6 +251,20 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
         let indexPath = NSIndexPath(forRow: 4, inSection: 0)
         tableView?.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
     }
+    func textFieldDidBeginEditing(textField: UITextField)
+    {
+        if textField.tag == 2{
+            textField.keyboardType = UIKeyboardType.EmailAddress
+        }
+        if textField.tag == 3{
+            textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+        }
+        if studentSelected == true{
+            if textField.tag == 8{
+                textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+            }
+        }
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
                if textField.tag == 2{
@@ -267,6 +291,8 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
             arrStudent.insert(textField.text!, atIndex: textField.tag)
         arrTeacher.removeAtIndex(textField.tag)
         arrTeacher.insert(textField.text!, atIndex: textField.tag)
+        textField.resignFirstResponder()
+        
             return true
         
     }
@@ -279,6 +305,20 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
 
     }
     func textFieldShouldEndEditing(textField: UITextField) -> Bool{
+        if textField.tag == 6{
+            if studentSelected == true{
+                if  arrStudent[5] != textField.text{
+                    API.showAlert(self, title: "Alert!", msg: "Password doe snot match!")
+                    return false
+                }
+            }
+            if studentSelected == false{
+                if  arrTeacher[5] != textField.text{
+                    API.showAlert(self, title: "Alert!", msg: "Password does not match!")
+                    return false
+                }
+            }
+        }
         arrStudent.removeAtIndex(textField.tag)
         arrStudent.insert(textField.text!, atIndex: textField.tag)
         arrTeacher.removeAtIndex(textField.tag)
@@ -286,6 +326,9 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
         return true
     }
     func validatePhone(value: String) -> Bool {
+        if value.characters.count != 10 {
+            API.showAlert(self, title: "Alert!", msg: "Phone number must not be with 10 digits")
+        }
         let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result =  phoneTest.evaluateWithObject(value)
@@ -298,9 +341,97 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
         return emailPredicate.evaluateWithObject(enteredEmail)
         
     }
-    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    {
+        let text: NSString = (textField.text ?? "") as NSString
+        let resultString = text.stringByReplacingCharactersInRange(range, withString: string)
+        if textField.tag == 8{
+            arrStudent.removeAtIndex(textField.tag)
+            arrStudent.insert(resultString, atIndex: textField.tag)
+            arrTeacher.removeAtIndex(textField.tag)
+            arrTeacher.insert(resultString, atIndex: textField.tag)
+        }
+        return true
+    }
     func signup() -> Void {
-        print(arrTeacher)
-        print(arrStudent)
+        
+        if studentSelected == true{
+         print(arrStudent)
+            if arrStudent[0] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your first name.")
+                return
+            }
+            if arrStudent[1] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your last name.")
+                return
+            }
+            if arrStudent[2] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your email.")
+                return
+            }
+            if arrStudent[3] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your phone number.")
+                return
+            }
+            if arrStudent[4] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please select your country.")
+                return
+            }
+            let params = ["user_type": "S", "email":arrStudent[2], "password":arrStudent[5], "firstname":arrStudent[0], "lastname":arrStudent[1],"country":countryID[countryList.indexOf(arrStudent[4])!] ,"grade":arrStudent[8],"phone":arrStudent[3]]
+            API.register(params, completion: {json in
+                print(json)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if String(json["status"]) == "SUCCESS"{
+                        API.showAlert(self, title: "Registration", msg: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.")
+                    }else{
+                        let msg = json["message"] as! String
+                        API.showAlert(self, title: "Registration", msg: msg)
+                    }
+                }
+            })
+            
+            
+        }
+        else{
+            if arrTeacher[0] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your first name.")
+                return
+            }
+            if arrTeacher[1] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your last name.")
+                return
+            }
+            if arrTeacher[2] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your email.")
+                return
+            }
+            if arrTeacher[3] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please Enter your phone number.")
+                return
+            }
+            if arrTeacher[4] == ""{
+                API.showAlert(self, title: "Alert!", msg: "Please select your country.")
+                return
+            }
+            print(arrTeacher)
+            let params = ["user_type": "T", "email":arrTeacher[2], "password":arrTeacher[5], "firstname":arrTeacher[0], "lastname":arrTeacher[1],"country":countryID[countryList.indexOf(arrStudent[4])!] ,"phone":arrStudent[3],"degree":arrTeacher[9],"profession":arrTeacher[8],"expertise":arrTeacher[10]]
+            API.register(params, completion: {json in
+                print(json)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if String(json["status"]) == "SUCCESS"{
+                        API.showAlert(self, title: "Registration", msg: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.")
+                    }else{
+                        let msg = json["message"] as! String
+                        API.showAlert(self, title: "Registration", msg: msg)
+                    }
+                }
+            })
+            
+        }
+       
+    }
+    
+    @IBAction func back(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

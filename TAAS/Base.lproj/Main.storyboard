@@ -396,7 +396,7 @@
         <!--Register View Controller-->
         <scene sceneID="Uv7-4s-fep">
             <objects>
-                <viewController id="YAx-VJ-jD7" customClass="RegisterViewController" customModule="TAAS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register" id="YAx-VJ-jD7" customClass="RegisterViewController" customModule="TAAS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F5g-9W-WWQ"/>
                         <viewControllerLayoutGuide type="bottom" id="v4i-Gs-1Qx"/>
@@ -438,6 +438,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iTc-8p-CN1">
                                                     <rect key="frame" x="18" y="5" width="564" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -474,8 +475,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-7z-CWy">
-                                                    <rect key="frame" x="18" y="7" width="564" height="29"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-7z-CWy">
+                                                    <rect key="frame" x="18" y="7" width="564" height="30"/>
                                                     <segments>
                                                         <segment title="STUDENT"/>
                                                         <segment title="TEACHER"/>
@@ -543,8 +544,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSW-i2-NJ5">
-                                                    <rect key="frame" x="20" y="0.0" width="560" height="42"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSW-i2-NJ5">
+                                                    <rect key="frame" x="20" y="0.0" width="560" height="43"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -561,8 +562,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="High School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-xT-yz6">
-                                                    <rect key="frame" x="22" y="15" width="556" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-xT-yz6">
+                                                    <rect key="frame" x="22" y="16" width="556" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="rKA-Qv-nGQ"/>
                                                     </constraints>
@@ -595,6 +596,15 @@
                                     <outlet property="delegate" destination="YAx-VJ-jD7" id="icY-9J-TOs"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp1-7L-46k">
+                                <rect key="frame" x="20" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back" destination="YAx-VJ-jD7" eventType="touchUpInside" id="A4W-2t-ttS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -603,8 +613,10 @@
                             <constraint firstItem="BYZ-f0-pj5" firstAttribute="leading" secondItem="L2r-mS-Tzt" secondAttribute="leading" id="8wn-gw-Ewt"/>
                             <constraint firstItem="BYZ-f0-pj5" firstAttribute="top" secondItem="L2r-mS-Tzt" secondAttribute="top" id="CLk-k8-3UR"/>
                             <constraint firstItem="u5z-o2-M36" firstAttribute="centerX" secondItem="L2r-mS-Tzt" secondAttribute="centerX" id="DGd-4d-d86"/>
+                            <constraint firstItem="Mp1-7L-46k" firstAttribute="top" secondItem="F5g-9W-WWQ" secondAttribute="bottom" id="GCL-nq-oie"/>
                             <constraint firstAttribute="trailing" secondItem="BYZ-f0-pj5" secondAttribute="trailing" id="GwK-rH-hj9"/>
                             <constraint firstItem="v4i-Gs-1Qx" firstAttribute="top" secondItem="BYZ-f0-pj5" secondAttribute="bottom" id="K2B-po-Hc9"/>
+                            <constraint firstItem="Mp1-7L-46k" firstAttribute="leading" secondItem="L2r-mS-Tzt" secondAttribute="leading" constant="20" id="PrL-7w-KGi"/>
                             <constraint firstItem="LiL-tb-bCP" firstAttribute="centerX" secondItem="L2r-mS-Tzt" secondAttribute="centerX" id="Pzx-wK-SBu"/>
                             <constraint firstItem="v4i-Gs-1Qx" firstAttribute="top" secondItem="BYZ-f0-pj5" secondAttribute="bottom" id="USB-46-43B"/>
                             <constraint firstItem="u5z-o2-M36" firstAttribute="top" secondItem="LiL-tb-bCP" secondAttribute="bottom" constant="23" id="VRk-h1-Sk3"/>
