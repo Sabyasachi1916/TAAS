@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC2A21443A1EFB74A97433717953274F"
+               BlueprintIdentifier = "59B06756D7F5701E6102C769989B0894"
                BuildableName = "Pods_TAAS.framework"
                BlueprintName = "Pods-TAAS"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC2A21443A1EFB74A97433717953274F"
+            BlueprintIdentifier = "59B06756D7F5701E6102C769989B0894"
             BuildableName = "Pods_TAAS.framework"
             BlueprintName = "Pods-TAAS"
             ReferencedContainer = "container:Pods.xcodeproj">

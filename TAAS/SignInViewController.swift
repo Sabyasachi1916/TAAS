@@ -60,6 +60,10 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
         // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector(animateBackgroundView()), userInfo: nil, repeats: true)
         let timer = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: #selector(self.animateBackgroundView), userInfo: nil, repeats: true);
         timer.fire()
+        
+        txtEmail.attributedPlaceholder = NSAttributedString(string:"Email", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        txtPass.attributedPlaceholder = NSAttributedString(string:"Password", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         // Do any additional setup after loading the view.
     }
 
@@ -116,7 +120,7 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
         }
         API.login(txtEmail.text!, txtPass: self.txtPass.text!, completion: {json in
             let dictAllInfo = NSDictionary(dictionary: json as! [NSObject : AnyObject])
-            print(dictAllInfo.valueForKey("status"))
+            print(dictAllInfo)
             if dictAllInfo.valueForKey("status")! as! String == "SUCCESS"{
                 dispatch_async(dispatch_get_main_queue()) {
                     let user = USER()
@@ -132,6 +136,11 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
                     self.performSegueWithIdentifier("signIn", sender: self)
                 }
                 
+            }
+            else{
+                dispatch_async(dispatch_get_main_queue()) {
+                API.showAlert(self, title: "Error!", msg: (dictAllInfo.valueForKey("message")! as! String))
+                }
             }
             
         })

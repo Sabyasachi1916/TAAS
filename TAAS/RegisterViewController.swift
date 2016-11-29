@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
-
-class RegisterViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIActionSheetDelegate {
+import Alamofire
+import SwiftyJSON
+class RegisterViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIActionSheetDelegate,NSURLSessionDelegate {
 var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","Password","Confirm Password","Student","Grade","Signup"]
     var countryID: [String] = []
     var countryList: [String] = []//["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic (CAR)","Chad","Chile","China","Colombia","Comoros","Democratic Republic of the Congo","Republic of the Congo","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates (UAE)","United Kingdom (UK)","United States of America (USA)","Uruguay","Uzbekistan","Vanuatu","Vatican City (Holy See)","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
@@ -142,9 +142,9 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     {
         
         UIView.animateWithDuration(0.5, animations: {
-            self.view.viewWithTag(200)!.frame = CGRectMake(0,self.view.frame.height,self.view.frame.width,250)
+            self.view.viewWithTag(200)?.frame = CGRectMake(0,self.view.frame.height,self.view.frame.width,250)
             }, completion: {(completion:Bool) in
-                self.view.viewWithTag(200)!.removeFromSuperview()
+                self.view.viewWithTag(200)?.removeFromSuperview()
                 self.view.viewWithTag(100)?.removeFromSuperview()
         })
     }
@@ -378,17 +378,37 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
                 return
             }
             let params = ["user_type": "S", "email":arrStudent[2], "password":arrStudent[5], "firstname":arrStudent[0], "lastname":arrStudent[1],"country":countryID[countryList.indexOf(arrStudent[4])!] ,"grade":arrStudent[8],"phone":arrStudent[3]]
-            API.register(params, completion: {json in
+             print(params)
+            self.AlamofireRegisterRequest(params, completion: {json in
                 print(json)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if String(json["status"]) == "SUCCESS"{
-                        API.showAlert(self, title: "Registration", msg: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.")
-                    }else{
-                        let msg = json["message"] as! String
-                        API.showAlert(self, title: "Registration", msg: msg)
-                    }
+let tempJson = JSON(json)
+                if tempJson["status"].stringValue == "SUCCESS"{
+                    let alert=UIAlertController(title: "Registration", message: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: {_ in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }));
+                    self.presentViewController(alert, animated: true, completion: nil);
+                    
+                }else{
+                    let msg = tempJson["message"].stringValue
+                    let alert=UIAlertController(title: "Registration", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: {_ in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil);
                 }
             })
+//            self.register(params, completion: {json in
+//                print(json)
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    if String(json["status"]) == "SUCCESS"{
+//                       
+//                    }else{
+//                        let msg = json["message"] as! String
+//                        API.showAlert(self, title: "Registration", msg: msg)
+//                    }
+//                }
+//            })
             
             
         }
@@ -415,17 +435,27 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
             }
             print(arrTeacher)
             let params = ["user_type": "T", "email":arrTeacher[2], "password":arrTeacher[5], "firstname":arrTeacher[0], "lastname":arrTeacher[1],"country":countryID[countryList.indexOf(arrStudent[4])!] ,"phone":arrStudent[3],"degree":arrTeacher[9],"profession":arrTeacher[8],"expertise":arrTeacher[10]]
-            API.register(params, completion: {json in
+            print(params)
+            self.AlamofireRegisterRequest(params, completion: {json in
                 print(json)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if String(json["status"]) == "SUCCESS"{
-                        API.showAlert(self, title: "Registration", msg: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.")
-                    }else{
-                        let msg = json["message"] as! String
-                        API.showAlert(self, title: "Registration", msg: msg)
-                    }
+                let tempJson = JSON(json)
+                if tempJson["status"].stringValue == "SUCCESS"{
+                    let alert=UIAlertController(title: "Registration", message: "Registration successfull. Now TAAS will verify your provided info as soon as possible. Please wait until verification.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: {_ in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }));
+                    self.presentViewController(alert, animated: true, completion: nil);
+                    
+                }else{
+                    let msg = tempJson["message"].stringValue
+                    let alert=UIAlertController(title: "Registration", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: {_ in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil);
                 }
             })
+
             
         }
        
@@ -434,4 +464,70 @@ var arrCellNames = ["First Name","Last Name","Email","Phone Number","Country","P
     @IBAction func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    
+    
+func register(params: [String:String],completion:(json:AnyObject) -> Void)->Void{
+        let url = NSURL(string:"https://urtaas.com/api/register")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+    
+            //let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = String(params).dataUsingEncoding(NSUTF8StringEncoding) //try NSJSONSerialization.dataWithJSONObject(params as [String:String], options: NSJSONWritingOptions())
+    request.addValue("text/html", forHTTPHeaderField: "Content-Type")
+    request.addValue("gzip,deflate", forHTTPHeaderField: "Accept-Encoding")
+    request.addValue("Keep-Alive", forHTTPHeaderField: "Connection")
+    
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue:nil)
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if let httpResponse = response as? NSHTTPURLResponse {
+                if httpResponse.statusCode != 200 {
+                    print("response was not 200: \(response)")
+                    return
+                }
+            }
+            if (error != nil) {
+                print("error submitting request: \(error)")
+                return
+            }
+            do {
+                guard let data = data else {
+                    throw JSONError.NoData
+                }
+                guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary else {
+                    throw JSONError.ConversionFailed
+                }
+                completion(json: json)
+                
+            } catch let error as JSONError {
+                print(error.rawValue)
+            } catch let error as NSError {
+                print(error.debugDescription)
+            }
+            
+            
+            // handle the data of the successful response here
+        }
+        task.resume()
+    }
+   
+    func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+        completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential, NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!))
+    }
+    
+    
+    
+    func AlamofireRegisterRequest(para : [String : AnyObject],completion:(json:AnyObject) -> Void)->Void{
+        Alamofire.request(.POST, "https://urtaas.com/api/register",parameters: para).responseJSON {response in
+                // print(response.description)
+                switch response.result {
+                case .Failure( let error):
+                    print(error)
+                case .Success(let responseObject):
+                    completion(json: responseObject)
+                    
+                }
+                
+        }
+}
 }
