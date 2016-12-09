@@ -14,6 +14,7 @@ enum JSONError: String, ErrorType {
 
 class API: NSObject
 {
+    var spinner : UIActivityIndicatorView?
     // LogIn
     class func login(txtEmail:String,txtPass:String,completion:(json:AnyObject) -> Void)->Void{
         let urlPath = "https://urtaas.com/api/login?email=\(txtEmail)&password=\(txtPass)"
@@ -77,5 +78,29 @@ class API: NSObject
             }.resume()
     }
     
-   
+    class  func showActivityIndicator(vc: UIViewController) -> UIView {
+        var loadingView: UIView = UIView()
+       
+            var spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+             loadingView = UIView()
+             loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+             loadingView.center =  vc.view.center
+             loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+             loadingView.alpha = 0.7
+             loadingView.clipsToBounds = true
+             loadingView.layer.cornerRadius = 10
+            
+             spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+             spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+             spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+            
+             loadingView.addSubview( spinner)
+             vc.view.addSubview( loadingView)
+             spinner.startAnimating()
+            
+            loadingView.tag = 200
+            return loadingView
+    }
+    
+  
 }

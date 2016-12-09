@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1DA2644A82A4BD5E1A2A322D /* Pods_TAAS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AEF4C9CF6085C2FEB48380 /* Pods_TAAS.framework */; };
+		280180A71DF4765200BE55D8 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280180A61DF4765200BE55D8 /* ListTableViewCell.swift */; };
+		280180A91DF49D7800BE55D8 /* PopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280180A81DF49D7800BE55D8 /* PopoverTableViewController.swift */; };
+		2810C7141DFA4A3C0089C4A0 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810C7131DFA4A3C0089C4A0 /* QuestionListViewController.swift */; };
 		2846F6651DDCD047005E0ABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6641DDCD047005E0ABF /* AppDelegate.swift */; };
 		2846F6671DDCD047005E0ABF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6661DDCD047005E0ABF /* ViewController.swift */; };
 		2846F66A1DDCD047005E0ABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2846F6681DDCD047005E0ABF /* Main.storyboard */; };
@@ -16,16 +19,24 @@
 		2846F6771DDCDBDE005E0ABF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6761DDCDBDE005E0ABF /* SignInViewController.swift */; };
 		2846F6791DDCE263005E0ABF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2846F6781DDCE263005E0ABF /* API.swift */; };
 		2850BFCF1DDE3BA200D882E9 /* TeacherHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2850BFCE1DDE3BA200D882E9 /* TeacherHomeViewController.swift */; };
+		2852680D1DF5F4E00063D411 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852680C1DF5F4E00063D411 /* DetailsViewController.swift */; };
+		2852680F1DF5F52C0063D411 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852680E1DF5F52C0063D411 /* QuestionTableViewCell.swift */; };
+		285268111DF5F53A0063D411 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285268101DF5F53A0063D411 /* AnswerTableViewCell.swift */; };
 		287008151DE6015B00BFCFA1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008141DE6015B00BFCFA1 /* RegisterViewController.swift */; };
 		287008171DE6280C00BFCFA1 /* textCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008161DE6280C00BFCFA1 /* textCell.swift */; };
 		287008191DE6293C00BFCFA1 /* selectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287008181DE6293C00BFCFA1 /* selectCell.swift */; };
 		2870081B1DE62E4B00BFCFA1 /* signupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870081A1DE62E4B00BFCFA1 /* signupCell.swift */; };
 		2870081D1DE6308F00BFCFA1 /* studentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */; };
+		28FDDC211DF2FFF40009C508 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDDC201DF2FFF40009C508 /* UploadViewController.swift */; };
+		28FE0D291DF44D5800FFF1E2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE0D281DF44D5800FFF1E2 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10C64BAC9E3D6C9BF8D7596D /* Pods-TAAS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TAAS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TAAS/Pods-TAAS.debug.xcconfig"; sourceTree = "<group>"; };
 		11E139A71BEC8954DB858029 /* Pods-TAAS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TAAS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TAAS/Pods-TAAS.release.xcconfig"; sourceTree = "<group>"; };
+		280180A61DF4765200BE55D8 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		280180A81DF49D7800BE55D8 /* PopoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverTableViewController.swift; sourceTree = "<group>"; };
+		2810C7131DFA4A3C0089C4A0 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
 		2846F6611DDCD047005E0ABF /* TAAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2846F6641DDCD047005E0ABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2846F6661DDCD047005E0ABF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,11 +47,16 @@
 		2846F6761DDCDBDE005E0ABF /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2846F6781DDCE263005E0ABF /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2850BFCE1DDE3BA200D882E9 /* TeacherHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherHomeViewController.swift; sourceTree = "<group>"; };
+		2852680C1DF5F4E00063D411 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		2852680E1DF5F52C0063D411 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		285268101DF5F53A0063D411 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		287008141DE6015B00BFCFA1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		287008161DE6280C00BFCFA1 /* textCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textCell.swift; sourceTree = "<group>"; };
 		287008181DE6293C00BFCFA1 /* selectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectCell.swift; sourceTree = "<group>"; };
 		2870081A1DE62E4B00BFCFA1 /* signupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signupCell.swift; sourceTree = "<group>"; };
 		2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = studentTableViewCell.swift; sourceTree = "<group>"; };
+		28FDDC201DF2FFF40009C508 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		28FE0D281DF44D5800FFF1E2 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D8AEF4C9CF6085C2FEB48380 /* Pods_TAAS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TAAS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,6 +102,14 @@
 				2870081A1DE62E4B00BFCFA1 /* signupCell.swift */,
 				287008181DE6293C00BFCFA1 /* selectCell.swift */,
 				2870081C1DE6308F00BFCFA1 /* studentTableViewCell.swift */,
+				28FDDC201DF2FFF40009C508 /* UploadViewController.swift */,
+				2810C7131DFA4A3C0089C4A0 /* QuestionListViewController.swift */,
+				28FE0D281DF44D5800FFF1E2 /* ListViewController.swift */,
+				280180A61DF4765200BE55D8 /* ListTableViewCell.swift */,
+				280180A81DF49D7800BE55D8 /* PopoverTableViewController.swift */,
+				2852680C1DF5F4E00063D411 /* DetailsViewController.swift */,
+				2852680E1DF5F52C0063D411 /* QuestionTableViewCell.swift */,
+				285268101DF5F53A0063D411 /* AnswerTableViewCell.swift */,
 				2846F6681DDCD047005E0ABF /* Main.storyboard */,
 				2846F66B1DDCD047005E0ABF /* Assets.xcassets */,
 				2846F66D1DDCD047005E0ABF /* LaunchScreen.storyboard */,
@@ -235,15 +259,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2846F6671DDCD047005E0ABF /* ViewController.swift in Sources */,
+				2852680F1DF5F52C0063D411 /* QuestionTableViewCell.swift in Sources */,
+				2810C7141DFA4A3C0089C4A0 /* QuestionListViewController.swift in Sources */,
+				28FDDC211DF2FFF40009C508 /* UploadViewController.swift in Sources */,
+				28FE0D291DF44D5800FFF1E2 /* ListViewController.swift in Sources */,
 				2870081D1DE6308F00BFCFA1 /* studentTableViewCell.swift in Sources */,
+				280180A91DF49D7800BE55D8 /* PopoverTableViewController.swift in Sources */,
 				2846F6651DDCD047005E0ABF /* AppDelegate.swift in Sources */,
 				2846F6791DDCE263005E0ABF /* API.swift in Sources */,
 				287008191DE6293C00BFCFA1 /* selectCell.swift in Sources */,
 				287008151DE6015B00BFCFA1 /* RegisterViewController.swift in Sources */,
 				2870081B1DE62E4B00BFCFA1 /* signupCell.swift in Sources */,
 				287008171DE6280C00BFCFA1 /* textCell.swift in Sources */,
+				285268111DF5F53A0063D411 /* AnswerTableViewCell.swift in Sources */,
 				2850BFCF1DDE3BA200D882E9 /* TeacherHomeViewController.swift in Sources */,
+				280180A71DF4765200BE55D8 /* ListTableViewCell.swift in Sources */,
 				2846F6771DDCDBDE005E0ABF /* SignInViewController.swift in Sources */,
+				2852680D1DF5F4E00063D411 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

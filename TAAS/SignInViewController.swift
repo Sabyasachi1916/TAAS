@@ -8,6 +8,7 @@
 import RealmSwift
 import UIKit
 class USER: Object {
+    
     dynamic var first_name = ""
     dynamic var last_name = ""
     dynamic var user_id = ""
@@ -21,6 +22,9 @@ class USER: Object {
     dynamic var city = ""
     dynamic var address1 = ""
     dynamic var address2 = ""
+}
+class HomeData:Object{
+    dynamic var savedData : NSData?
 }
 class SignInViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet var txtEmail: UITextField!
@@ -118,6 +122,7 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
             API.showAlert(self, title: "Alert", msg: "Please enter your password")
             return
         }
+        let vwSpinner = API.showActivityIndicator(self)
         API.login(txtEmail.text!, txtPass: self.txtPass.text!, completion: {json in
             let dictAllInfo = NSDictionary(dictionary: json as! [NSObject : AnyObject])
             print(dictAllInfo)
@@ -130,6 +135,7 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
                     user.user_type = (dictAllInfo.valueForKeyPath("data.user.user_type")! as! String)
                     user.image = (dictAllInfo.valueForKeyPath("data.user.image")! as! String)
                     user.expertise = (dictAllInfo.valueForKeyPath("data.user.expertise")! as! String)
+                    user.user_id = (dictAllInfo.valueForKeyPath("data.user.user_id")! as! String)
                     try! self.realm.write {
                         self.realm.add(user)
                     }
@@ -142,7 +148,9 @@ class SignInViewController: UIViewController ,UITextFieldDelegate{
                 API.showAlert(self, title: "Error!", msg: (dictAllInfo.valueForKey("message")! as! String))
                 }
             }
-            
+            dispatch_async(dispatch_get_main_queue()) {
+           vwSpinner.removeFromSuperview()
+            }
         })
     }
     override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
